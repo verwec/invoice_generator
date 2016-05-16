@@ -1,8 +1,38 @@
 # InvoiceGenerator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/invoice_generator`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Usage
 
-TODO: Delete this and the text above, and describe your gem
+```
+params = {
+    date: '01.01.2015',
+    subject: 'Ihre Rechnung vom 23.03.2015',
+    sender_name: 'Bob Miller',
+    sender_address: 'FooStreet 1',
+    sender_zipcode: '12345',
+    sender_city: 'Berlin',
+    recipient_name: 'Peter Foo',
+    recipient_address: 'FooStreet 1',
+    recipient_zipcode: '12455',
+    recipient_city: 'Berlin',
+    order_date: '01.01.2015',
+    total: '100 EUR',
+    bank: 'FooBank',
+    sender_iban: 'DE1234567',
+    sender_bic: 'DE1234567',
+    reference: 'Order #1234',
+    order: 'Fancy Product Description',
+    sender_commercial_register_number: '55555',
+    sender_district_court: 'Finanzamt Berlin',
+    sender_tax_number: '123453245',
+    salutation: 'Sehr geehrte Damen und Herren,',
+    farewell: 'Mit freundlichen Grüßen'
+}
+
+
+InvoiceGenerator.generate_invoice('filename.pdf', params)
+
+```
+
 
 ## Installation
 
@@ -19,10 +49,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install invoice_generator
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Development
 

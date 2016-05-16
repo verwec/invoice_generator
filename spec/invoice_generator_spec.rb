@@ -38,7 +38,7 @@ describe InvoiceGenerator do
       PDF::Inspector::Text.analyze(rendered_pdf).strings.join('  ')
     end
 
-    it 'contains something' do
+    it 'includes all params' do
       params.each_pair do |_key, value|
         expect(text_analysis).to include(value)
       end

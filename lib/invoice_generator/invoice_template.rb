@@ -35,7 +35,7 @@ module InvoiceGenerator
     end
 
     def sender_address_line
-      bounding_box [20.mm, bounds.absolute_top - 45.mm],
+      bounding_box [20.mm, bounds.absolute_top - 35.mm],
         width: 100.mm, height: 8.mm do
         font_size FONT_SIZE-2 do
           text "#{sender_name}, #{sender_address}, #{sender_zipcode} #{sender_city}"
@@ -44,7 +44,7 @@ module InvoiceGenerator
     end
 
     def recipient_block
-      bounding_box [20.mm, bounds.absolute_top - 75.mm], width: 85.mm, height: 24.mm do
+      bounding_box [20.mm, bounds.absolute_top - 45.mm], width: 85.mm, height: 24.mm do
         text recipient_name
         text recipient_address
         text "#{recipient_zipcode} #{recipient_city}"
@@ -65,7 +65,7 @@ module InvoiceGenerator
       pad(7) { text salutation }
 
       pad 7 do
-        content = "am #{order_date} haben Sie folgende Leistung in Anspruch genommen:"
+        content = "vielen Dank für Ihre Bestellung vom #{order_date}. Anbei übersende ich Ihnen meine Rechnung mit der Bitte um Ausgleich."
         text content, inline_format: true
       end
 
@@ -74,12 +74,12 @@ module InvoiceGenerator
       end
 
       pad 7 do
-        content = "Bitte überweisen Sie innerhalb von 14 Tagen den offenen Rechnungsbetrag von <b>#{total}</b> (inkl. MwSt.) auf unser Konto bei der #{bank} mit dem Empfänger #{sender_name}, IBAN: #{sender_iban}, BIC: #{sender_bic} und dem Verwendungszweck <b>#{reference}</b>."
+        content = "Bitte überweisen Sie den Betrag in Höhe von  #{total} innerhalb von 14 Tagen auf mein Konto bei der #{bank} mit dem Empfänger #{sender_name}, IBAN: #{sender_iban}, BIC: #{sender_bic} und dem Verwendungszweck <b>#{reference}</b>."
         text content, inline_format: true
       end
 
       pad 7 do
-        text farewell
+        text farewell, inline_format: true
         move_down 20
         text sender_name
       end
@@ -87,7 +87,7 @@ module InvoiceGenerator
 
     def footer
       font_size FONT_SIZE-2 do
-        text_box "#{sender_name} | #{sender_commercial_register_number} | #{sender_district_court} | SteuerNr. #{sender_tax_number}", at: [20.mm, 20]
+        text_box "#{sender_name} | Steuernummer: #{sender_tax_number}", at: [20.mm, 20]
       end
     end
 

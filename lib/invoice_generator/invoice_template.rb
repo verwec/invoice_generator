@@ -74,7 +74,7 @@ module InvoiceGenerator
       end
 
       pad 7 do
-        content = "Bitte überweisen Sie den Betrag in Höhe von  #{total} innerhalb von 14 Tagen auf mein Konto bei der #{bank} mit dem Empfänger #{sender_name}, IBAN: #{sender_iban}, BIC: #{sender_bic} und dem Verwendungszweck <b>#{reference}</b>."
+        content = "Bitte überweisen Sie den Betrag in Höhe von #{total} #{payment_time} auf mein Konto bei der #{bank} mit dem Empfänger #{sender_name}, IBAN: #{sender_iban}, BIC: #{sender_bic} und dem Verwendungszweck <b>#{reference}</b>."
         text content, inline_format: true
       end
 
